@@ -38,6 +38,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   lottie:
   get:
+  google_fonts:
+  animated_text_kit:
+  flip_card:
+  url_launcher:
+  rxdart:
 
 dev_dependencies:
   flutter_test:

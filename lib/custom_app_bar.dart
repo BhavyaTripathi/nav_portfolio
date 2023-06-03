@@ -1,9 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/animated_gradient_button.dart';
 
 class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  const CustomAppBar({Key? key, required this.callBack}) : super(key: key);
+  final Function(String) callBack;
 
   @override
   _CustomAppBarState createState() => _CustomAppBarState();
@@ -13,6 +15,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   ScrollNotificationObserverState? _scrollNotificationObserver;
   bool _scrolledUnder = false;
+  bool hoverOne = false;
+  bool hoverTwo = false;
+  bool hoverThree = false;
 
   @override
   void didChangeDependencies() {
@@ -63,7 +68,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
     Widget appBarContent = LayoutBuilder(
         builder: (BuildContext ctx, BoxConstraints constraints) {
-          if (constraints.maxWidth >= 500) {
+          if (constraints.maxWidth >= 550) {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -77,106 +82,122 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("About",
-                          style: TextStyle(
+                      MouseRegion(
+                        onEnter: (_){
+                          setState(() {
+                            hoverOne = true;
+                          });
+                        },
+                        onExit: (_){
+                          setState(() {
+                            hoverOne = false;
+                          });
+                        },
+                        child: InkWell(
+                          onTap:(){
+                            widget.callBack("About");
+                          },
+                          child: Text("About",
+                              style: TextStyle(
+                                  fontFamily: 'Podkova',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color: hoverOne ? const Color(0xFFFF3D00)  :  const Color(0xFFFFFFFF).withOpacity(0.7)
+                              )
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 80,
+                      ),
+                      MouseRegion(
+                        onEnter: (_){
+                          setState(() {
+                            hoverTwo = true;
+                          });
+                        },
+                        onExit: (_){
+                          setState(() {
+                            hoverTwo = false;
+                          });
+                        },
+                        child: InkWell(
+                          onTap:(){
+                            widget.callBack("Work");
+                          },
+                          child: Text("Work", style: TextStyle(
                               fontFamily: 'Podkova',
                               fontSize: 20,
-                              color: Color(0xFFFFFFFF).withOpacity(0.7)
-                          )
+                              fontWeight: FontWeight.w600,
+                              color: hoverTwo ? const Color(0xFFFF3D00)  :  const Color(0xFFFFFFFF).withOpacity(0.7)
+                          )),
+                        ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 80,
                       ),
-                      Text("Work", style: TextStyle(
-                          fontFamily: 'Podkova',
-                          fontSize: 20,
-                          color: Color(0xFFFFFFFF).withOpacity(0.7)
-                      )),
-                      SizedBox(
-                        width: 80,
+                      MouseRegion(
+                        onEnter: (_){
+                          setState(() {
+                            hoverThree = true;
+                          });
+                        },
+                        onExit: (_){
+                          setState(() {
+                            hoverThree = false;
+                          });
+                        },
+                        child: InkWell(
+                          onTap:(){
+                            widget.callBack("Blog");
+                          },
+                          child: Text("Blog", style: TextStyle(
+                              fontFamily: 'Podkova',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                              color: hoverThree ? const Color(0xFFFF3D00)  : const Color(0xFFFFFFFF).withOpacity(0.7)
+                          )),
+                        ),
                       ),
-                      Text("Blog", style: TextStyle(
-                          fontFamily: 'Podkova',
-                          fontSize: 20,
-                          color: Color(0xFFFFFFFF).withOpacity(0.7)
-                      )),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints.tightFor( height: 40),
-                    child: ElevatedButton(onPressed: (){},
-                        child: Text("Resume",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Podkova',
-                                color: Color(0xFFFFFFFF).withOpacity(0.7)
-                            )
-                        ),style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.resolveWith((states) {
-                              return Color(0xFFFFFFFF).withOpacity(0.1);
-                            }),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                  //side: BorderSide(color: Colors.red)
-                                )
-                            )
-                        )),
-                  ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: AnimatedGradientButton("RESUME", const Color(0xFFFFFFFF).withOpacity(0.1), const Color(0xFFFF3D00),(){})
                 )
               ],
             );
           }
-          else return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'asset/logo.png',
+          else {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'asset/logo.png',
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints.tightFor( height: 40),
-                  child: ElevatedButton(onPressed: (){},
-                      child: Text("Resume",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Podkova',
-                              color: Color(0xFFFFFFFF).withOpacity(0.7)
-                          )
-                      ),style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.resolveWith((states) {
-                            return Color(0xFFFFFFFF).withOpacity(0.1);
-                          }),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                //side: BorderSide(color: Colors.red)
-                              )
-                          )
-                      )),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: AnimatedGradientButton("RESUME", const Color(0xFFFFFFFF).withOpacity(0.1), const Color(0xFFFF3D00),(){}),
                 ),
-              ),
-              Icon(Icons.menu, color: Color(0xFFFFFFFF).withOpacity(0.7), size: 35,)
-            ],
-          );
+              ],
+            );
+          }
         });
-    appBarContent = Align(
+    return Align(
       alignment: Alignment.center,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(40))
         ),
         alignment: Alignment.center,
         width: MediaQuery.of(context).size.width/1.5,
-        child: _scrolledUnder ? ClipRect(
+        child: _scrolledUnder ? ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(40)),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: appBarContent,
@@ -184,7 +205,5 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ) : appBarContent,
       ),
     );
-
-    return appBarContent;
   }
 }

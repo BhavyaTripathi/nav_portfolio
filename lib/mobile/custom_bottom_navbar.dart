@@ -37,7 +37,6 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
       final ScrollMetrics metrics = notification.metrics;
       switch (metrics.axisDirection) {
         case AxisDirection.up:
-        // Scroll view is reversed
           _scrolledUnder = metrics.extentAfter > 0;
           break;
         case AxisDirection.down:
@@ -45,7 +44,6 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
           break;
         case AxisDirection.right:
         case AxisDirection.left:
-        // Scrolled under is only supported in the vertical axis.
           _scrolledUnder = false;
           break;
       }
@@ -63,7 +61,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
 
     Widget appBarContent = Container(
       height: 70,
-      color: Color(0xFF000000).withOpacity(0.05),
+      color: const Color(0xFF000000).withOpacity(0.05),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -71,25 +69,26 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
               style: TextStyle(
                   fontFamily: 'Podkova',
                   fontSize: 20,
-                  color: Color(0xFFFFFFFF).withOpacity(0.7)
+                  color: const Color(0xFFFFFFFF).withOpacity(0.7)
               )
           ),
           Text("Work", style: TextStyle(
               fontFamily: 'Podkova',
               fontSize: 20,
-              color: Color(0xFFFFFFFF).withOpacity(0.7)
+              color: const Color(0xFFFFFFFF).withOpacity(0.7)
           )),
           Text("Blog", style: TextStyle(
               fontFamily: 'Podkova',
               fontSize: 20,
-              color: Color(0xFFFFFFFF).withOpacity(0.7)
+              color: const Color(0xFFFFFFFF).withOpacity(0.7)
           )),
         ],
       ),
     );
-    appBarContent = Container(
+    appBarContent = SizedBox(
       width: MediaQuery.of(context).size.width/1.5,
-      child: _scrolledUnder ? ClipRect(
+      child: _scrolledUnder ? ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(40)),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: appBarContent,

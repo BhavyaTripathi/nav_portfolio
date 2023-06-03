@@ -1,4 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+
+import 'card_controller.dart';
 
 class BlogScreen extends StatefulWidget {
   const BlogScreen({Key? key}) : super(key: key);
@@ -8,46 +12,63 @@ class BlogScreen extends StatefulWidget {
 }
 
 class _BlogScreenState extends State<BlogScreen> {
+  List<CardController> listController = [];
+  @override
+  void initState() {
+    for(int i=0;i<2;i++){
+      listController.add(CardController());
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext ctx, BoxConstraints constraints) {
           if (constraints.maxWidth >= 1000) {
             return Container(
-              color: Color(0xFFD9D9D9).withOpacity(0.05),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [ const Color(0xFF1B0600).withOpacity(0.2), const Color(0xFF1B0600),],
+                ),
+              ),
               height: 625,
               child: Align(
                   alignment: Alignment.center,
-                  child: Container(
+                  child: SizedBox(
                     width:MediaQuery.of(context).size.width/1.5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Blogs", style: TextStyle(
+                        const Text("Blogs", style: TextStyle(
                             color: Color(0xFFFFFFFF),
                             fontFamily: 'Futura',
                             fontSize: 28,
                             fontWeight: FontWeight.bold
                         ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                         Row(
                           children: [
                             Expanded(
-                              child: customCard('asset/project1.jpeg', 'ChatBot in Flutter using DialogFlow'),
+                              child: customCard('asset/blog1.png', 'Flutter Apps Using Common Business Logic', width: 400, height: 300,index: 0,
+                                  desc: 'In this blog, I built a Flutter application using common code. Codesharing is an approach that ensures Code reusability, as the common code base which contains the business logic can be used by any framework.'),
                             ),
                             const SizedBox(
                               width: 40,
                             ),
                             Expanded(
-                              child: customCard('asset/project1.jpeg', 'ChatBot in Flutter using DialogFlow'),
+                              child:
+                              customCard('asset/blog2.png', 'Simplify Flutter & AngularDart development with common code', width: 400, height: 300, index: 1,
+                                  desc: 'In this blog, I built Flutter and AngularDart applications using common business logic. The common code base which contains the business logic can be used by both Flutter and AngularDart applications. The only thing that the respective application needs to focus on is the UI part which further leads to Faster development.'),
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                       ],
@@ -55,90 +76,149 @@ class _BlogScreenState extends State<BlogScreen> {
                   )),
             );
           }
-          else return Container(
-            color: Color(0xFFD9D9D9).withOpacity(0.05),
-            height: 800,
-            child: Align(
-                alignment: Alignment.center,
-                child: Container(
-                  width:MediaQuery.of(context).size.width/1.5,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text("Blogs", style: TextStyle(
-                          color: Color(0xFFFFFFFF),
-                          fontFamily: 'Futura',
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold
-                      ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      customCard('asset/project1.jpeg', 'ChatBot in Flutter using DialogFlow', width: 400, height: 300),
-                      const SizedBox(
-                        height: 14,
-                      ),
-                      customCard('asset/project1.jpeg', 'ChatBot in Flutter using DialogFlow', width: 400, height: 300),
-                    ],
-                  ),
-                )),
-          );
+          else {
+            return Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [ const Color(0xFF1B0600).withOpacity(0.2), const Color(0xFF1B0600),],
+                ),
+              ),
+              height: 800,
+              child: Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width:MediaQuery.of(context).size.width/1.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text("Blogs", style: TextStyle(
+                            color: Color(0xFFFFFFFF),
+                            fontFamily: 'Futura',
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold
+                        ),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        customCard('asset/blog1.png', 'Flutter Apps Using Common Business Logic', width: 400, height: 300,index: 0,
+                            desc: 'In this blog, I built a Flutter application using common code. Codesharing is an approach that ensures Code reusability, as the common code base which contains the business logic can be used by any framework.',
+                            font: 16),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        customCard('asset/blog2.png', 'Simplify Flutter & AngularDart development with common code', width: 400, height: 300, index: 1,
+                            desc: 'In this blog, I built Flutter and AngularDart applications using common business logic. The common code base which contains the business logic can be used by both Flutter and AngularDart applications. The only thing that the respective application needs to focus on is the UI part which further leads to Faster development.',
+                            font: 16),
+                      ],
+                    ),
+                  )),
+            );
+          }
         });
   }
 
-  Widget customCard(String image, String des, {double width = 300, double height = 350}){
-    return Card(
-        color: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: SizedBox(
-          width: width,
-          height: height,
-          child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(14.0),
-                    child: Image.asset(
-                      image,
-                      alignment: Alignment.center,
-                      height: double.infinity,
-                      width: double.infinity,
-                      fit: BoxFit.fill,
+  Widget customCard(String image, String des, {double width = 300, double height = 350, int index =0, String desc ='', double font = 20}){
+    return MouseRegion(
+      onEnter: (_){
+        listController[index].flipCardController.toggleCard();
+      },
+      child: Card(
+          color: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: SizedBox(
+            width: width,
+            height: 345,
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: FlipCard(
+                      flipOnTouch: false,
+                      controller: listController[index].flipCardController,
+                      front: ClipRRect(
+                        borderRadius: BorderRadius.circular(14.0),
+                        child: Container(
+                          color: Colors.white,
+                          child: Image.asset(
+                            image,
+                            alignment: Alignment.center,
+                            height: 250,
+                            width: double.infinity,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                      back: ClipRRect(
+                        borderRadius: BorderRadius.circular(14.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(0xFFFFFFFF).withOpacity(0.2)
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(14))
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: animatedTextWidget(desc, font),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 18,
-                ),
-                const Text("ChatBot in Flutter using DialogFlow",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Podkova',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400
-                  ),),
-                const SizedBox(
-                  height: 14,
-                ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.start,
-                //   children: [
-                //     Icon(Icons.flag, color: Colors.white),
-                //     Icon(Icons.flag, color: Colors.white),
-                //     Icon(Icons.flag, color: Colors.white),
-                //     Icon(Icons.flag, color: Colors.white),
-                //   ],
-                // )
-              ],
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  Text("ChatBot in Flutter using DialogFlow",
+                    style: TextStyle(
+                        color: const Color(0xFFFFFFFF).withOpacity(0.7),
+                        fontFamily: 'Podkova',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700
+                    ),),
+                  const SizedBox(
+                    height: 14,
+                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   children: [
+                  //     Icon(Icons.flag, color: Colors.white),
+                  //     Icon(Icons.flag, color: Colors.white),
+                  //     Icon(Icons.flag, color: Colors.white),
+                  //     Icon(Icons.flag, color: Colors.white),
+                  //   ],
+                  // )
+                ],
+              ),
             ),
-          ),
-        ));
+          )),
+    );
+  }
+  Widget animatedTextWidget(String text, double font) {
+    return AnimatedTextKit(
+        repeatForever: true,
+        animatedTexts: [
+          TypewriterAnimatedText(text,
+              textAlign: TextAlign.center,
+              textStyle:TextStyle(
+                color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                fontFamily: 'FuturaMedium',
+                letterSpacing: 1.5,
+                fontSize: font,
+                //fontWeight: FontWeight.w400
+              ),
+              speed: const Duration(milliseconds: 100),
+              cursor: '|'),
+        ]
+    );
   }
 }

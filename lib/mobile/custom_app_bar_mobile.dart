@@ -72,23 +72,23 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ConstrainedBox(
-              constraints: BoxConstraints.tightFor( height: 40),
-              child: ElevatedButton(onPressed: (){},
-                  child: Text("Resume",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Podkova',
-                          color: Color(0xFFFFFFFF).withOpacity(0.7)
+              constraints: const BoxConstraints.tightFor( height: 40),
+              child: ElevatedButton(onPressed: (){},style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith((states) {
+                    return const Color(0xFFFFFFFF).withOpacity(0.1);
+                  }),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
                       )
-                  ),style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith((states) {
-                        return Color(0xFFFFFFFF).withOpacity(0.1);
-                      }),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            //side: BorderSide(color: Colors.red)
-                          )
+                  )
+              ),
+                  child: const Text("Resume",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'FuturaBold',
+                          letterSpacing: 2,
+                          color: Colors.white
                       )
                   )),
             ),
@@ -97,13 +97,14 @@ class _CustomAppBarMobileState extends State<CustomAppBarMobile> {
       ),
     );
     appBarContent = Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.all(Radius.circular(40))
       ),
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width/1.5,
-      child: _scrolledUnder ? ClipRect(
+      child: _scrolledUnder ? ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(40)),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: appBarContent,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ContactScreenMobile extends StatefulWidget {
   const ContactScreenMobile({Key? key}) : super(key: key);
@@ -11,24 +12,31 @@ class _ContactScreenMobileState extends State<ContactScreenMobile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF000000),
-      height: 850,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [ Color(0xFF1B0600), Color(0xFF000000)],
+        ),
+      ),
+      height: 760,
       child: Padding(
         padding: const EdgeInsets.only(left: 22.0, right: 22),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 30,
+            const SizedBox(
+              height: 60,
             ),
-            Text("I'd love to hear from you", style: TextStyle(
+            const Text("Get in touch", style: TextStyle(
                 color: Colors.white,
-                fontSize: 32,
+                fontWeight: FontWeight.w600,
+                fontSize: 34,
                 fontFamily: 'Futura'
             )),
-            SizedBox(
-              height: 30,
+            const SizedBox(
+              height: 40,
             ),
             Align(
               alignment: Alignment.center,
@@ -38,123 +46,146 @@ class _ContactScreenMobileState extends State<ContactScreenMobile> {
                 width: 150,
               ),
             ),
-            SizedBox(
-              width: 30,
+            const SizedBox(
+              height: 30,
             ),
-            Expanded(
-              // flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text("Let's connect",style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontFamily: 'Furura'
-                        )),
-                      ),
-                      SizedBox(
-                        width: 40,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.mail_outline, color: Color(0xFFFFFFFF).withOpacity(0.56),size: 18,),
-                          SizedBox(
-                            width: 6,
-                          ),
-                          Text("tripathii.bhavya@gmail.com",
-                              style: TextStyle(
-                                  color: Color(0xFFFFFFFF).withOpacity(0.56),
-                                  fontSize: 16,
-                                  fontFamily: 'Podkova'
-                              ))
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text("Full name", style: TextStyle(
-                      color: Color(0xFFFFFFFF).withOpacity(0.56),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Text("Message", style: TextStyle(
+                    color: const Color(0xFFFFFFFF).withOpacity(0.56),
+                    fontSize: 16,
+                    fontFamily: 'Podkova'
+                )),
+                const SizedBox(
+                  height: 5,
+                ),
+                TextField(
+                  maxLines: 5,
+                  minLines: 5,
+                  style: TextStyle(
+                      color: const Color(0xFFFFFFFF).withOpacity(0.56),
                       fontSize: 16,
                       fontFamily: 'Podkova'
-                  )),
-                  textField('Enter Your Name'),
-                  SizedBox(
-                    height: 20,
                   ),
-                  Text("Email address", style: TextStyle(
-                      color: Color(0xFFFFFFFF).withOpacity(0.56),
-                      fontSize: 16,
-                      fontFamily: 'Podkova'
-                  )),
-                  textField('Enter Your email'),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text("Message", style: TextStyle(
-                      color: Color(0xFFFFFFFF).withOpacity(0.56),
-                      fontSize: 16,
-                      fontFamily: 'Podkova'
-                  )),
-                  TextField(
-                    maxLines: 5,
-                    minLines: 5,
-                    style: TextStyle(
-                        color: Color(0xFFFFFFFF).withOpacity(0.56),
+                  cursorColor: const Color(0xFFFFFFFF).withOpacity(0.56),
+                  decoration: InputDecoration(
+                    isDense: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                    ),
+                    hintStyle: TextStyle(
+                        color: const Color(0xFFFFFFFF).withOpacity(0.40),
                         fontSize: 16,
                         fontFamily: 'Podkova'
                     ),
-                    cursorColor: Color(0xFFFFFFFF).withOpacity(0.56),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      border: OutlineInputBorder(
-                          borderSide: new BorderSide(color: Color(0xFFFFFFFF).withOpacity(0.40))
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: new BorderSide(color: Color(0xFFFFFFFF).withOpacity(0.40))
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: new BorderSide(color: Color(0xFFFFFFFF).withOpacity(0.40))
-                      ),
-                      hintStyle: TextStyle(
-                          color: Color(0xFFFFFFFF).withOpacity(0.40),
-                          fontSize: 16,
-                          fontFamily: 'Podkova'
-                      ),
-                      hintText: 'Type here',
+                    hintText: 'Type here',
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints.tightFor( height: 40,width: double.infinity),
+                  child: ElevatedButton(onPressed: (){},style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith((states) {
+                        return const Color(0xFFFF3D00);
+                      }),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          )
+                      )
+                  ),
+                      child: const Text("SEND MESSAGE",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'FuturaBold',
+                              letterSpacing: 2,
+                              color: Colors.white
+                          )
+                      )),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+
+                    Container(
+                      height: 45,
+                      width: 5,
+                      color: const Color(0xFFFFFFFF).withOpacity(0.2),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ConstrainedBox(
-                    constraints: BoxConstraints.tightFor( height: 40,width: double.infinity),
-                    child: ElevatedButton(onPressed: (){},
-                        child: Text("SEND MESSAGE",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'Podkova',
-                                color: Colors.white
-                            )
-                        ),style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.resolveWith((states) {
-                              return Color(0xFFFF3D00);
-                            }),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                )
-                            )
-                        )),
-                  )
-                ],
-              ),
+                    Expanded(
+                      child: Center(
+                          child: RichText(
+                            text: TextSpan(
+                                text: 'tripathii.bhavya@gmail.com',
+                                style: TextStyle(
+                                    fontFamily: 'FuturaMedium',
+                                    letterSpacing: 2,
+                                    color: const Color(0xFFFFFFFF)
+                                        .withOpacity(0.5))),
+                          )
+                      ),
+                    ),
+                    Container(
+                      height: 45,
+                      width: 5,
+                      color: const Color(0xFFFFFFFF).withOpacity(0.2),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'asset/linkedin.png',
+                      height: 20,
+                      width: 20,
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    Image.asset(
+                      'asset/github.png',
+                      height: 20,
+                      width: 20,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Developed with ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
+                        Image.asset('asset/heart.png',height: 14,width: 14,),
+                        Text(" by ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
+                        Text(" Bhavya Tripathi ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14, fontWeight: FontWeight.bold)),
+                      ],
+                    )
+                ),
+              ],
             )
           ],
         ),
@@ -165,23 +196,23 @@ class _ContactScreenMobileState extends State<ContactScreenMobile> {
   Widget textField(String hint){
     return TextField(
       style: TextStyle(
-          color: Color(0xFFFFFFFF).withOpacity(0.56),
+          color: const Color(0xFFFFFFFF).withOpacity(0.56),
           fontSize: 16,
           fontFamily: 'Podkova'
       ),
-      cursorColor: Color(0xFFFFFFFF).withOpacity(0.56),
+      cursorColor: const Color(0xFFFFFFFF).withOpacity(0.56),
       decoration: InputDecoration(
         border: OutlineInputBorder(
-            borderSide: new BorderSide(color: Color(0xFFFFFFFF).withOpacity(0.40))
+            borderSide: BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
         ),
         enabledBorder: OutlineInputBorder(
-            borderSide: new BorderSide(color: Color(0xFFFFFFFF).withOpacity(0.40))
+            borderSide: BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
         ),
         focusedBorder: OutlineInputBorder(
-            borderSide: new BorderSide(color: Color(0xFFFFFFFF).withOpacity(0.40))
+            borderSide: BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
         ),
         hintStyle: TextStyle(
-            color: Color(0xFFFFFFFF).withOpacity(0.40),
+            color: const Color(0xFFFFFFFF).withOpacity(0.40),
             fontSize: 16,
             fontFamily: 'Podkova'
         ),
