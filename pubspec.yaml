@@ -74,6 +74,25 @@ flutter:
     - asset/pic.png
     - asset/project1.jpeg
     - asset/contact.png
+    - asset/linkedin.png
+    - asset/github.png
+    - asset/project2.png
+    - asset/project3.jpeg
+    - asset/project4.jpeg
+    - asset/project5.jpeg
+    - asset/project6.jpeg
+    - asset/project7.jpeg
+    - asset/project8.jpeg
+    - asset/blog1.png
+    - asset/blog2.png
+    - asset/profile_pic.png
+    - asset/firebase.png
+    - asset/flutter.jpeg
+    - asset/dart.png
+    - asset/sqlite.png
+    - asset/heart.png
+    - asset/dflow.png
+    - asset/flu.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -91,11 +110,18 @@ flutter:
     - family: Podkova
       fonts:
         - asset: fonts/Podkova-Regular.ttf
-#        - asset: fonts/Schyler-Italic.ttf
-#          style: italic
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     - family: Futura
       fonts:
         - asset: fonts/Futura Book font.ttf
+
+    - family: FuturaBold
+      fonts:
+        - asset: fonts/Futura Bold font.ttf
+    - family: FuturaMedium
+      fonts:
+        - asset: fonts/futura medium bt.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
