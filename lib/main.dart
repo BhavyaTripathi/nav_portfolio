@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:portfolio_flutter_web/about_screen.dart';
+import 'package:portfolio_flutter_web/contact_screen.dart';
 import 'package:portfolio_flutter_web/mobile/portfolio_mobile.dart';
 import 'package:portfolio_flutter_web/portfolio_screen.dart';
+import 'package:portfolio_flutter_web/work_screen.dart';
+import 'package:url_strategy/url_strategy.dart';
+
+import 'blog_screen.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -28,7 +36,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: GetPlatform.isMobile?PortfolioMobile():PortfolioScreen(),
+        initialRoute: "/home",
+        routes: {
+          "/home": (context) => PortfolioScreen(),
+          "/about": (context) => AboutScreen(),
+          "/work": (context) => WorkScreen(),
+          "/blog": (context) => BlogScreen(),
+          "/contact": (context) => ContactScreen(),
+        }
     );
   }
 }

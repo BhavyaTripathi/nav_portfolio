@@ -43,6 +43,9 @@ dependencies:
   flip_card:
   url_launcher:
   rxdart:
+  page_transition:
+#  velocity_x: ^2.6.0
+  url_strategy:
 
 dev_dependencies:
   flutter_test:

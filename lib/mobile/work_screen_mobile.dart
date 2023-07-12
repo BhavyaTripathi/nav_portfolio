@@ -90,7 +90,7 @@ class _WorkScreenMobileState extends State<WorkScreenMobile> {
                 const SizedBox(width: 40),
                 Image.asset('asset/dflow.png',height: 25,width: 25),
               ],
-            ),width: 400,height: 300, index: 3),
+            ),width: 400,height: 300, index: 3, desc: 'This app is an E-commerce app that has all the screens that an e-commerce app should have. This app is able to navigate to all the screens and has the functionality to add to wishlist, and cart.'),
             const SizedBox(
               height: 14,
             ),
@@ -102,7 +102,7 @@ class _WorkScreenMobileState extends State<WorkScreenMobile> {
                 const SizedBox(width: 40),
                 Image.asset('asset/dflow.png',height: 25,width: 25),
               ],
-            ),width: 400,height: 300, index: 4),
+            ),width: 400,height: 300, index: 4, desc: 'This app is the exact UI of the netflix application.'),
             const SizedBox(
               height: 14,
             ),
@@ -114,7 +114,7 @@ class _WorkScreenMobileState extends State<WorkScreenMobile> {
                 const SizedBox(width: 40),
                 Image.asset('asset/dflow.png',height: 25,width: 25),
               ],
-            ),width: 400,height: 300, index: 5),
+            ),width: 400,height: 300, index: 5, desc: 'This app is similar to the reels app that displays the videos in the form of a list and has the functionality of displaying likes, comments.'),
             const SizedBox(
               height: 14,
             ),
@@ -126,7 +126,7 @@ class _WorkScreenMobileState extends State<WorkScreenMobile> {
                 const SizedBox(width: 40),
                 Image.asset('asset/dflow.png',height: 25,width: 25),
               ],
-            ),width: 400,height: 300, index: 6),
+            ),width: 400,height: 300, index: 6, desc: 'This app is able to integrate and deliver push notifications to a Flutter application using an awesome service provided by Firebase called Firebase Cloud Messaging.'),
             const SizedBox(
               height: 14,
             ),
@@ -138,7 +138,7 @@ class _WorkScreenMobileState extends State<WorkScreenMobile> {
                 const SizedBox(width: 40),
                 Image.asset('asset/dflow.png',height: 25,width: 25),
               ],
-            ),width: 400,height: 300, index: 7),
+            ),width: 400,height: 300, index: 7, desc: 'This app is able to integrate and deliver push notifications to a Flutter application using an awesome service provided by Firebase called Firebase Cloud Messaging.'),
           ],
         ),
       ),

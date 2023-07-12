@@ -18,269 +18,273 @@ class _ContactScreenState extends State<ContactScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext ctx, BoxConstraints constraints) {
-          if (constraints.maxWidth >= 1100) {
-            return Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [ Color(0xFF1B0600), Color(0xFF000000)],
-                ),
-              ),
-              height: 625,
-              child: Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width:MediaQuery.of(context).size.width/1.5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("I'd love to hear from you", style: TextStyle(
-                            color: Colors.white,
+    return
+      Scaffold(
+        backgroundColor: const Color(0xFF000000),
+        body: SingleChildScrollView(
+        child: LayoutBuilder(
+            builder: (BuildContext ctx, BoxConstraints constraints) {
+              if (constraints.maxWidth >= 1100) {
+                return Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [ Color(0xFF1B0600), Color(0xFF000000)],
+                    ),
+                  ),
+                  height: 625,
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width:MediaQuery.of(context).size.width/1.5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 60,
+                            ),
+                            const DefaultTextStyle(
+                        style: TextStyle(
+                        color: Colors.white,
                             fontSize: 38,
                             fontFamily: 'Futura'
-                        )),
-                        const SizedBox(
-                          height: 120,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              // flex: 1,
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Image.asset(
-                                  'asset/contact.png',
-                                  height: 200,
-                                  width: 200,
-                                ),
-                              ),
+                              child: Text("I'd love to hear from you", ),
                             ),
                             const SizedBox(
-                              width: 30,
+                              height: 120,
                             ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text("Message", style: TextStyle(
-                                      color: const Color(0xFFFFFFFF).withOpacity(0.56),
-                                      fontSize: 16,
-                                      fontFamily: 'Podkova'
-                                  )),
-                                  const SizedBox(
-                                      height: 5
-                                  ),
-                                  TextField(
-                                    controller: messageController,
-                                    maxLines: 5,
-                                    minLines: 5,
-                                    style: TextStyle(
-                                        color: const Color(0xFFFFFFFF).withOpacity(0.56),
-                                        fontSize: 16,
-                                        fontFamily: 'Podkova'
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  // flex: 1,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Image.asset(
+                                      'asset/contact.png',
+                                      height: 200,
+                                      width: 200,
                                     ),
-                                    cursorColor: const Color(0xFFFFFFFF).withOpacity(0.56),
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      border: OutlineInputBorder(
-                                          borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 30,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(
+                                        height: 20,
                                       ),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
-                                      ),
-                                      hintStyle: TextStyle(
-                                          color: const Color(0xFFFFFFFF).withOpacity(0.40),
+                                      Text("Message", style: TextStyle(
+                                          color: const Color(0xFFFFFFFF).withOpacity(0.56),
                                           fontSize: 16,
                                           fontFamily: 'Podkova'
+                                      )),
+                                      const SizedBox(
+                                          height: 5
                                       ),
-                                      hintText: 'Type here',
-                                    ),
+                                      TextField(
+                                        controller: messageController,
+                                        maxLines: 5,
+                                        minLines: 5,
+                                        style: TextStyle(
+                                            color: const Color(0xFFFFFFFF).withOpacity(0.56),
+                                            fontSize: 16,
+                                            fontFamily: 'Podkova'
+                                        ),
+                                        cursorColor: const Color(0xFFFFFFFF).withOpacity(0.56),
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          border: OutlineInputBorder(
+                                              borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                          ),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                          ),
+                                          hintStyle: TextStyle(
+                                              color: const Color(0xFFFFFFFF).withOpacity(0.40),
+                                              fontSize: 16,
+                                              fontFamily: 'Podkova'
+                                          ),
+                                          hintText: 'Type here',
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      ConstrainedBox(
+                                          constraints: const BoxConstraints.tightFor( height: 40,width: double.infinity),
+                                          child:AnimatedGradientButton("SEND MESSAGE", const Color(0xFFFF3D00), const Color(0xFF1B0600),(){
+                                            if(emailController.text.isEmpty|| messageController.text.isEmpty){
+                                              showSnackBar('Please fill all the fields!');
+                                              return;
+                                            }
+                                            sendEmailJS(
+                                                email: emailController.text,
+                                                message: messageController.text);
+                                          })
+                                      )
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  ConstrainedBox(
-                                      constraints: const BoxConstraints.tightFor( height: 40,width: double.infinity),
-                                      child:AnimatedGradientButton("SEND MESSAGE", const Color(0xFFFF3D00), const Color(0xFF1B0600),(){
-                                        if(emailController.text.isEmpty|| messageController.text.isEmpty){
-                                          showSnackBar('Please fill all the fields!');
-                                          return;
-                                        }
-                                        sendEmailJS(
-                                            email: emailController.text,
-                                            message: messageController.text);
-                                      })
-                                  )
-                                ],
-                              ),
+                                )
+                              ],
+                            ),
+
+                            Expanded(
+                              child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text("Developed with ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
+                                      Image.asset('asset/heart.png',height: 14,width: 14,),
+                                      Text(" by ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
+                                      Text(" Bhavya Tripathi ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14, fontWeight: FontWeight.bold)),
+
+                                    ],
+                                  )),
                             )
                           ],
                         ),
-                        const SizedBox(
-                          height: 220,
-                        ),
-                        Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text("Developed with ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
-                                Image.asset('asset/heart.png',height: 14,width: 14,),
-                                Text(" by ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
-                                Text(" Bhavya Tripathi ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14, fontWeight: FontWeight.bold)),
-
-                              ],
-                            ))
-                      ],
+                      )),
+                );
+              }
+              else {
+                return Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [ Color(0xFF1B0600), Color(0xFF000000)],
                     ),
-                  )),
-            );
-          }
-          else {
-            return Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [ Color(0xFF1B0600), Color(0xFF000000)],
-                ),
-              ),
-              height: 850,
-              child: Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width:MediaQuery.of(context).size.width/1.5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const Text("I'd love to hear from you", style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 38,
-                            fontFamily: 'Futura'
-                        )),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        Align(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            'asset/contact.png',
-                            height: 200,
-                            width: 200,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Subject", style: TextStyle(
-                                  color: const Color(0xFFFFFFFF).withOpacity(0.56),
-                                  fontSize: 16,
-                                  fontFamily: 'Podkova'
-                              )),
-                              const SizedBox(
-                                  height: 5
+                  ),
+                  height: 700,
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width:MediaQuery.of(context).size.width/1.5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            const DefaultTextStyle(
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 38,
+                                  fontFamily: 'Futura'
                               ),
-                              textField('Enter Your subject'),
-                              const SizedBox(
-                                height: 20,
+                              child: Text("I'd love to hear from you", ),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                'asset/contact.png',
+                                height: 200,
+                                width: 200,
                               ),
-                              Text("Message", style: TextStyle(
-                                  color: const Color(0xFFFFFFFF).withOpacity(0.56),
-                                  fontSize: 16,
-                                  fontFamily: 'Podkova'
-                              )),
-                              const SizedBox(
-                                  height: 5
-                              ),
-                              TextField(
-                                maxLines: 5,
-                                minLines: 5,
-                                style: TextStyle(
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Message", style: TextStyle(
                                     color: const Color(0xFFFFFFFF).withOpacity(0.56),
                                     fontSize: 16,
                                     fontFamily: 'Podkova'
+                                )),
+                                const SizedBox(
+                                    height: 5
                                 ),
-                                cursorColor: const Color(0xFFFFFFFF).withOpacity(0.56),
-                                decoration: InputDecoration(
-                                  isDense: true,
-                                  border: OutlineInputBorder(
-                                      borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
-                                  ),
-                                  hintStyle: TextStyle(
-                                      color: const Color(0xFFFFFFFF).withOpacity(0.40),
+                                TextField(
+                                  maxLines: 5,
+                                  minLines: 5,
+                                  style: TextStyle(
+                                      color: const Color(0xFFFFFFFF).withOpacity(0.56),
                                       fontSize: 16,
                                       fontFamily: 'Podkova'
                                   ),
-                                  hintText: 'Type here',
+                                  cursorColor: const Color(0xFFFFFFFF).withOpacity(0.56),
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    border: OutlineInputBorder(
+                                        borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderSide:  BorderSide(color: const Color(0xFFFFFFFF).withOpacity(0.40))
+                                    ),
+                                    hintStyle: TextStyle(
+                                        color: const Color(0xFFFFFFFF).withOpacity(0.40),
+                                        fontSize: 16,
+                                        fontFamily: 'Podkova'
+                                    ),
+                                    hintText: 'Type here',
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints.tightFor( height: 40,width: double.infinity),
-                                child: AnimatedGradientButton("SEND MESSAGE", const Color(0xFFFF3D00), const Color(0xFF1B0600),(){
-                                  if(emailController.text.isEmpty|| messageController.text.isEmpty){
-                                    showSnackBar('Please fill all the fields!');
-                                    return;
-                                  }
-                                  sendEmailJS(
-                                      email: emailController.text,
-                                      message: messageController.text);
-                                }),
-                              )
-                            ],
-                          ),
-                        ),
-                        Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text("Developed with ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
-                                Image.asset('asset/heart.png',height: 14,width: 14,),
-                                Text(" by ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
-                                Text(" Bhavya Tripathi ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14, fontWeight: FontWeight.bold)),
-
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ConstrainedBox(
+                                  constraints: const BoxConstraints.tightFor( height: 40,width: double.infinity),
+                                  child: AnimatedGradientButton("SEND MESSAGE", const Color(0xFFFF3D00), const Color(0xFF1B0600),(){
+                                    if(emailController.text.isEmpty|| messageController.text.isEmpty){
+                                      showSnackBar('Please fill all the fields!');
+                                      return;
+                                    }
+                                    sendEmailJS(
+                                        email: emailController.text,
+                                        message: messageController.text);
+                                  }),
+                                )
                               ],
-                            )),
-                        const SizedBox(
-                          height: 20,
-                        )
-                      ],
-                    ),
-                  )),
-            );
-          }
-        });
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text("Developed with ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
+                                    Image.asset('asset/heart.png',height: 14,width: 14,),
+                                    Text(" by ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14)),
+                                    Text(" Bhavya Tripathi ", style: GoogleFonts.zillaSlab(color: const Color(0xFFACACAC), fontSize: 14, fontWeight: FontWeight.bold)),
+
+                                  ],
+                                )),
+                            const SizedBox(
+                              height: 20,
+                            )
+                          ],
+                        ),
+                      )),
+                );
+              }
+            }),
+    ),
+      );
   }
 
   Future sendEmailJS({

@@ -73,28 +73,28 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                 width: MediaQuery.of(context).size.width / 1.5,
                                 child: heroSection()),
                           ),
-                          const SizedBox(
-                            height: 80,
-                          ),
-                          Container(key: aboutKey, child: const AboutScreen()),
-                          Container(
-                            color: const Color(0xFFD9D9D9).withOpacity(0.05),
-                            height: 40,
-                          ),
-                          Container(key: workKey, child: const WorkScreen()),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Container(key: blogKey, child: const BlogScreen()),
-                          Container(
-                            color: const Color(0xFF1B0600),
-                            height: 40,
-                          ),
-                          Container(key: contactKey, child: const ContactScreen()),
-                          Container(
-                            color: const Color(0xFF000000),
-                            height: 80,
-                          ),
+                          // const SizedBox(
+                          //   height: 60,
+                          // ),
+                          // Container(key: aboutKey, child: const AboutScreen()),
+                          // Container(
+                          //   color: const Color(0xFFD9D9D9).withOpacity(0.05),
+                          //   height: 40,
+                          // ),
+                          // Container(key: workKey, child: const WorkScreen()),
+                          // const SizedBox(
+                          //   height: 40,
+                          // ),
+                          // Container(key: blogKey, child: const BlogScreen()),
+                          // Container(
+                          //   color: const Color(0xFF1B0600),
+                          //   height: 40,
+                          // ),
+                          // Container(key: contactKey, child: const ContactScreen()),
+                          // Container(
+                          //   color: const Color(0xFF000000),
+                          //   height: 80,
+                          // ),
                         ]),
                   );
                 }),
@@ -287,16 +287,16 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     var con;
     switch (header) {
       case "About":
-        con = aboutKey.currentContext ?? context;
+        con = "/about";
         break;
       case "Blog":
-        con = blogKey.currentContext ?? context;
+        con = "/blog";
         break;
       case "Work":
-        con = workKey.currentContext ?? context;
+        con = "/work";
         break;
       case "Contact":
-        con = contactKey.currentContext ?? context;
+        con = "/contact";
         break;
     }
     scrollToItem(con);
@@ -461,10 +461,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         });
   }
 
-  Future scrollToItem(BuildContext con) async {
-    await Scrollable.ensureVisible(con,
-        duration: const Duration(milliseconds: 1000),
-        curve: Curves.easeInCubic);
+  Future scrollToItem(String con) async {
+    Navigator.pushNamed(context, con);
   }
 
   Widget animatedTextWidget() {
